@@ -179,7 +179,7 @@ if __name__ == '__main__':
     args = parse_args()
 
     num_gpus = int(os.environ['SM_NUM_GPUS'])
-    if num_gpus == 0:
+    if (num_gpus == 0) or torch.cuda.is_available:
         args.gpu = -1
     else:
         args.gpu = 0
